@@ -1,2 +1,1 @@
-# Restaurante-Binario
-Proyecto de Clase
+# Restaurante-Los-Binarios
