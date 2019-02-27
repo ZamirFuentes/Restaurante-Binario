@@ -38,6 +38,7 @@ namespace ResBinario.WebAdmin.Controllers
 
             return RedirectToAction("Index");
         }
+
         public ActionResult Editar(int id)
         {
             var producto = _productosBL.ObtenerProducto(id);

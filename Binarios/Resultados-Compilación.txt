@@ -1,0 +1,2 @@
+﻿1>------ Operación Compilar iniciada: proyecto: ResBinario.BL, configuración: Debug Any CPU ------
+La compilación se ha cancelado.

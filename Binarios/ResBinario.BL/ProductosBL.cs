@@ -27,7 +27,7 @@ namespace ResBinario.BL
 
         public void GuardarProducto(Producto producto)
         {
-            if(producto.Id ==0)
+            if(producto.Id == 0)
             {
                 _contexto.Productos.Add(producto);
             }else
@@ -37,7 +37,6 @@ namespace ResBinario.BL
                 productoExistente.Precio = producto.Precio;
             }
 
-            _contexto.Productos.Add(producto);
             _contexto.SaveChanges();
         }
 
