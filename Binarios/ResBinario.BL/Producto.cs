@@ -18,5 +18,6 @@ namespace ResBinario.BL
         public double Precio { get; set; }
         public Categoria Categoria { get; set; }
         public bool Activo { get; set; }
+        public int CategoriaId { get; set; }
     }
 }

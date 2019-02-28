@@ -9,19 +9,22 @@ namespace ResBinario.BL
     public class ProductosBL
     {
         Contexto _contexto;
-        public List<Producto> ListaProductos { get; set; }
+        public List<Producto> ListadeProductos { get; set; }
 
         public ProductosBL()
         {
             _contexto = new Contexto();
-            ListaProductos = new List<Producto>();
+            ListadeProductos = new List<Producto>();
 
         }
         public List<Producto> ObtenerProductos()
         {
 
-            ListaProductos = _contexto.Productos.ToList();
-            return ListaProductos;
+            ListadeProductos = _contexto.Productos
+                .Include("Categoria")
+                .ToList();
+
+            return ListadeProductos;
 
         }
 
@@ -42,7 +45,8 @@ namespace ResBinario.BL
 
         public Producto ObtenerProducto(int id)
         {
-            var producto = _contexto.Productos.Find(id);
+            var producto = _contexto.Productos
+                .Include("Categoria").FirstOrDefault(p => p.Id == id);
 
             return producto;
         }
