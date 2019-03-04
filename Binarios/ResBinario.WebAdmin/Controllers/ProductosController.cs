@@ -39,9 +39,23 @@ namespace ResBinario.WebAdmin.Controllers
         [HttpPost]
         public ActionResult Crear(Producto producto)
         {
-            _productosBL.GuardarProducto(producto);
+            if (ModelState.IsValid)
+            {
+                if (producto.CategoriaId == 0)
+                {
+                    ModelState.AddModelError("Categoria", "Seleccione una Categoria");
+                    return View(producto);
+                }
 
-            return RedirectToAction("Index");
+                _productosBL.GuardarProducto(producto);
+
+                return RedirectToAction("Index");
+            }
+            var categorias = _categoriasBL.ObtenerCategorias();
+
+            ViewBag.CategoriaId = new SelectList(categorias, "Id", "Descripcion");
+
+            return View(producto);
         }
 
         public ActionResult Editar(int id)
@@ -56,9 +70,23 @@ namespace ResBinario.WebAdmin.Controllers
         [HttpPost]
         public ActionResult Editar(Producto producto)
         {
-            _productosBL.GuardarProducto(producto);
+            if (ModelState.IsValid)
+            {
+                if (producto.CategoriaId == 0)
+                {
+                    ModelState.AddModelError("Categoria", "Seleccione una Categoria");
+                    return View(producto);
+                }
 
-            return RedirectToAction("Index");
+                _productosBL.GuardarProducto(producto);
+
+                return RedirectToAction("Index");
+            }
+            var categorias = _categoriasBL.ObtenerCategorias();
+
+            ViewBag.CategoriaId = new SelectList(categorias, "Id", "Descripcion");
+
+            return View(producto);
         }
 
         public ActionResult Detalle (int id)
